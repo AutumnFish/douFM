@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/list/list",
+    "pages/detail/detail",
+    "pages/test/test"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#43C74D",
+    "navigationBarTitleText": "黑瓣",
+    "navigationBarTextStyle":"white"
+  }
+}
+
+
+
+
+

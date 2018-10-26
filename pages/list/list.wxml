@@ -1,0 +1,30 @@
+<view class="nav-box">
+    <navigator>黑瓣</navigator>
+    <view class="right">
+        <navigator>电影</navigator>
+        <navigator>图书</navigator>
+        <navigator>广播</navigator>
+        <navigator>小组</navigator>
+        <icon type="search" color="#43C74D" size="13" />
+    </view>
+</view>
+<view class="list-box">
+    <!-- 绑定数据 根据带过来的tag 生成不同的名字 -->
+    <text>{{listName}}</text>
+    <view class="items">
+        <view class="item" wx:for="{{movieList}}" wx:key="{{item.id}}">
+            <navigator>
+                <image src="{{item.images.small}}" />
+                <text>{{item.title}}</text>
+                <view class="star-box">
+                    <!-- block 是微信提供给我们的一个占位标签,渲染之后页面上看不到 -->
+                    <block wx:for="{{item.startArr}}" wx:for-item="it">
+                        <text wx:if="{{it==1}}" class="orange">★</text>
+                        <text wx:else class="gray">★</text>
+                    </block>
+                    {{item.rating.average}}
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view>

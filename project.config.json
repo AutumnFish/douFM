@@ -1,0 +1,62 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wxf38fa8abade84a24",
+	"projectname": "03.%E9%BB%91%E7%93%A3",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "去列表",
+					"pathName": "pages/list/list",
+					"query": "tag=in_theaters"
+				},
+				{
+					"id": -1,
+					"name": "去测试页",
+					"pathName": "pages/test/test",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "去详情页",
+					"pathName": "pages/detail/detail",
+					"query": "id=26425063"
+				}
+			]
+		}
+	}
+}

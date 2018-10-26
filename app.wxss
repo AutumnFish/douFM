@@ -1,0 +1,104 @@
+/* pages/index/index.wxss */
+.nav-box {
+    height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+    /* line-height: 100rpx; */
+    align-items: center;
+    border-bottom: 2rpx solid #ccc;
+    padding: 0 40rpx;
+    background-color: white;
+}
+
+.nav-box>navigator {
+    font-size: 48rpx;
+    color: #43C74D;
+    font-weight: 700;
+}
+
+.nav-box .right {
+    display: flex;
+}
+
+.nav-box .right>navigator {
+    font-size: 26rpx;
+    margin-right: 36rpx;
+    font-weight: 700;
+}
+
+.nav-box .right>navigator:first-of-type {
+    color: deepskyblue;
+}
+
+.nav-box .right>navigator:nth-of-type(2) {
+    color: #9F7860;
+}
+
+.nav-box .right>navigator:nth-of-type(3) {
+    color: orange;
+}
+
+.nav-box .right>navigator:nth-of-type(4) {
+    color: skyblue;
+}
+
+.nav-box icon {
+    /* color:#43C74D; */
+    margin-top: 6rpx;
+    transform: scale(1.5, 1.5)
+}
+
+.item {
+    display: inline-block;
+    margin-right: 14rpx;
+}
+
+.item navigator {
+    display: block;
+    width: 200rpx;
+    height: 290rpx;
+}
+
+.item navigator image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.item navigator text {
+    display: block;
+    text-align: center;
+}
+
+.item navigator>text:first-of-type {
+    margin-top: 18rpx;
+    font-size: 27rpx;
+    overflow: hidden;/*超出部分隐藏*/
+    white-space: nowrap;/*不换行*/
+    text-overflow:ellipsis;/*超出部分文字以...显示*/
+}
+
+.item navigator .star-box {
+    color: gray;
+    display: flex;
+    font-size: 26rpx;
+    justify-content: center;
+    padding-top: 10rpx;
+}
+
+.item navigator .star-box text {}
+
+.item navigator .star-box .orange {
+    color: orange;
+}
+
+.item navigator .star-box .gray {
+    color: #ccc;
+}
+
+/* 没有评分样式 */
+.no-score{
+    font-size:27rpx;
+    color:#ccc;
+    padding-top: 10rpx;
+}

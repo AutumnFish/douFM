@@ -1,0 +1,82 @@
+<view class="nav-box">
+    <navigator>黑瓣</navigator>
+    <view class="right">
+        <navigator>电影</navigator>
+        <navigator>图书</navigator>
+        <navigator>广播</navigator>
+        <navigator>小组</navigator>
+        <icon type="search" color="#43C74D" size="13" />
+    </view>
+</view>
+<!-- 电影区域 -->
+<view class="section">
+    <view class="title">
+        <text>影院热映</text>
+        <navigator url="/pages/list/list?tag=in_theaters">更多</navigator>
+    </view>
+    <scroll-view scroll-x>
+        <view class="item" wx:for="{{hotMovie}}" wx:key="{{item.id}}">
+            <navigator url="/pages/detail/detail?id={{item.id}}">
+                <image src="{{item.images.small}}" />
+                <text>{{item.title}}</text>
+                <text wx:if="{{item.rating.average==0}}" class="no-score">暂无评分</text>
+                <view wx:else class="star-box">
+                    <!-- block 是微信提供给我们的一个占位标签,渲染之后页面上看不到 -->
+                    <block wx:for="{{item.startArr}}" wx:for-item="it">
+                        <text wx:if="{{it==1}}" class="orange">★</text>
+                        <text wx:else class="gray">★</text>
+                    </block>
+                    {{item.rating.average}}
+                </view>
+            </navigator>
+        </view>
+    </scroll-view>
+</view>
+<!-- 即将上映 -->
+<view class="section">
+    <view class="title">
+        <text>即将上映</text>
+        <navigator url="/pages/list/list?tag=coming_soon">更多</navigator>
+    </view>
+    <scroll-view scroll-x>
+        <view class="item" wx:for="{{comingMovie}}" wx:key="{{item.id}}">
+            <navigator>
+                <image src="{{item.images.small}}" />
+                <text>{{item.title}}</text>
+                <text wx:if="{{item.rating.average==0}}" class="no-score">暂无评分</text>
+                <view wx:else class="star-box">
+                    <!-- block 是微信提供给我们的一个占位标签,渲染之后页面上看不到 -->
+                    <block wx:for="{{item.startArr}}" wx:for-item="it">
+                        <text wx:if="{{it==1}}" class="orange">★</text>
+                        <text wx:else class="gray">★</text>
+                    </block>
+                    {{item.rating.average}}
+                </view>
+            </navigator>
+        </view>
+    </scroll-view>
+</view>
+<!-- top250 -->
+<view class="section">
+    <view class="title">
+        <text>吐血推荐</text>
+        <navigator url="/pages/list/list?tag=top250">更多</navigator>
+    </view>
+    <scroll-view scroll-x>
+        <view class="item" wx:for="{{goodMovie}}" wx:key="{{item.id}}">
+            <navigator>
+                <image src="{{item.images.small}}" />
+                <text>{{item.title}}</text>
+                <text wx:if="{{item.rating.average==0}}" class="no-score">暂无评分</text>
+                <view wx:else class="star-box">
+                    <!-- block 是微信提供给我们的一个占位标签,渲染之后页面上看不到 -->
+                    <block wx:for="{{item.startArr}}" wx:for-item="it">
+                        <text wx:if="{{it==1}}" class="orange">★</text>
+                        <text wx:else class="gray">★</text>
+                    </block>
+                    {{item.rating.average}}
+                </view>
+            </navigator>
+        </view>
+    </scroll-view>
+</view>

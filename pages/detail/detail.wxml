@@ -1,0 +1,130 @@
+<view class="nav-box">
+    <navigator>黑瓣</navigator>
+    <view class="right">
+        <navigator>电影</navigator>
+        <navigator>图书</navigator>
+        <navigator>广播</navigator>
+        <navigator>小组</navigator>
+        <icon type="search" color="#43C74D" size="13" />
+    </view>
+</view>
+<!-- 豆瓣广告 一会用图片替代 -->
+<!-- 电影信息 -->
+<view class="info-box">
+    <text class="title">{{movieInfo.title}}</text>
+    <view class="flex-box">
+        <view class="left">
+            <view class="top">
+                <text wx:if="{{movieInfo.rating.average==0}}" class="no-score">暂无评分</text>
+                <view wx:else class="star-box">
+                    <block wx:for="{{movieInfo.starArr}}">
+                        <image wx:if="{{item==1}}" src="/img/full.png" />
+                        <image wx:elif="{{item==3}}" src="/img/halfStar.jpg" />
+                        <image wx:else src="/img/empty.png" />
+                    </block>
+                </view>
+                <text class="score">{{movieInfo.rating.average}}</text>
+                <text class="comments">{{movieInfo.ratings_count}}人评价</text>
+            </view>
+            <!-- bottom -->
+            <view class="bottom">
+                {{movieInfo.durations[0]}} /
+                <block wx:for="{{movieInfo.genres}}">{{item}} /</block>
+                {{movieInfo.directors[0].name}}(导演) /
+                <block wx:for="{{movieInfo.casts}}">{{item.name}} /</block>
+                {{movieInfo.pubdates[0]}} 上映
+            </view>
+        </view>
+        <view class="right">
+            <image src="{{movieInfo.images.small}}" />
+        </view>
+    </view>
+</view>
+<!-- 是否想看按钮 -->
+<view class="view-button">
+    <view>想看</view>
+    <view>看过</view>
+</view>
+<!-- 所属频道 -->
+<view class="channel-box">
+    <view class="title">所属频道</view>
+    <view class="tag-box">
+        <view wx:for="{{movieInfo.tags}}">
+            {{item}}
+            <image src="/img/green_arrow.png" />
+        </view>
+    </view>
+</view>
+<!-- 简介 -->
+<view class="movie-desc">
+    <view class="title">{{movieInfo.title}}的剧情简介</view>
+    <view class="desc">
+        {{cutSummary}}
+        <view wx:if="{{cutSummary.length<70}}" bindtap="more" class="more">(更多)</view>
+        <view wx:if="{{cutSummary.length>=70}}" bindtap="cut" class="cut">(收起)</view>
+    </view>
+</view>
+<!-- 影人 -->
+<view class="movie-desc">
+    <view class="title">影人</view>
+    <!-- 滚动区域 -->
+    <scroll-view scroll-x>
+        <view class="item">
+            <image src="{{movieInfo.directors[0].avatars.small}}"></image>
+            <text class='name'>{{movieInfo.directors[0].name}}</text>
+            <text class="job">导演</text>
+        </view>
+        <view wx:for="{{movieInfo.casts}}" class="item">
+            <image src="{{item.avatars.small}}"></image>
+            <text class='name'>{{item.name}}</text>
+            <text class="job">演员</text>
+        </view>
+    </scroll-view>
+</view>
+<!-- 预告片&图片 -->
+<view class="movie-desc">
+    <view class="title small">
+        {{movieInfo.title}}的预告片({{movieInfo.trailers.length}})、视频评论(1)和图片({{movieInfo.photos_count}})
+    </view>
+    <!-- 滚动区域 -->
+    <scroll-view scroll-x>
+        <view wx:for="{{movieInfo.trailers}}" class="video-item">
+            <video src="https://apd-a4cec776998b43949bc8d697ac19746e.v.smtcdns.com/vhot2.qqvideo.tc.qq.com/AMidSOEvgzdafNe7IkiHLutb_y-qL_mS_YcmwKuiahm4/f0753wzjnxd.mp4?sdtfrom=v5010&guid=344781f57668d1f74461c0cc052724ed&vkey=293EAE1DE4D5FC85714EB2F0C7ACE20BD6A493150ABC0A81073A205DDA9084EEB78F6A13AFD32181424EC4DD6AD79E4F572461ED47A0340A2EBEC72FC1635F35BCADA874DB08F56BB8ABB0804E29EE1F2A4ADB283E0B63BF42B8E09A4F4228B6ECCF17D7D64A259669F3F01FDF019918B98E9BB195300977&platform=2" controls></video>
+        </view>
+    </scroll-view>
+</view>
+<!-- 评论布局 -->
+<view class="comment-box">
+    <view class="title">{{movieInfo.title}}的短评({{movieInfo.comments_count}})</view>
+    <view wx:for="{{movieInfo.popular_comments}}" class="section">
+        <view class="left">
+            <image src="{{item.author.avatar}}"></image>
+        </view>
+        <view class="right">
+            <view class="name">
+                {{item.author.name}}
+                <view class="star-box">
+                    <!-- <block wx:for="{{item.starArr}}">
+                        <image wx:if="{{item==1}}" src="/img/full.png" />
+                        <image wx:elif="{{item==3}}" src="/img/halfStar.jpg" />
+                        <image wx:else src="/img/empty.png" />
+                    </block> -->
+                </view>
+            </view>
+            <view class="time">
+                {{item.created_at}}
+            </view>
+            <view class="content">
+                {{item.content}}
+            </view>
+            <view class="good">
+                <view class="good-left">
+                    👍{{item.useful_count}}
+                </view>
+                <view class="good-right">
+                    ...
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
